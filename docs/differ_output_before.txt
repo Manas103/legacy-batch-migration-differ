@@ -1,0 +1,10 @@
+differ: comparing 250000 legacy record(s) against 250000 new-service record(s)
+fields compared per record: account_id, isin, currency, market_value, settle_date
+
+RESULT: 4 discrepancy(ies) found.
+
+ record_id  field          legacy               new                 
+     25000  market_value   12340.01             12340.00            
+     49999  market_value   45821                45820               
+     74998  settle_date    2023-03-08           2023-03-07          
+    225603  market_value   -0                   0                   

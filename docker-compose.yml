@@ -1,0 +1,24 @@
+# Documented, not executed in this build environment (the Docker daemon was
+# unavailable here; see README). Standing up both sides for a real parallel
+# run in a real environment:
+#
+#   docker compose run legacy python legacy_batch.py /data/input.txt /data/legacy_output.csv
+#   docker compose up java-service
+#   python differ/differ.py /data/legacy_output.csv /data/java_output.csv
+#
+services:
+  legacy:
+    build:
+      context: ./legacy
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/data
+
+  java-service:
+    build:
+      context: ./java-service
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/data
+    ports:
+      - "8080:8080"

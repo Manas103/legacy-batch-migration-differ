@@ -1,0 +1,4 @@
+differ: comparing 250000 legacy record(s) against 250000 new-service record(s)
+fields compared per record: account_id, isin, currency, market_value, settle_date
+
+RESULT: 0 discrepancies. Full equivalence over every compared record and field.
