@@ -102,7 +102,7 @@ AMD Ryzen 7 7800X3D, 8 physical / 16 logical cores, Windows 11 Home, JDK 21 targ
 ```bash
 # legacy side
 cd legacy
-python generate_input.py ../data/eod_positions_250000.txt   # 250,000 seeded records
+python generate_input.py ../data/eod_positions_250000.txt 250000   # 250,000 seeded records
 python legacy_batch.py ../data/eod_positions_250000.txt ../data/legacy_output.csv
 
 # java side (from java-service/)
