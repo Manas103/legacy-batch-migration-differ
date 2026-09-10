@@ -31,19 +31,23 @@ public class BusinessDayCalendar {
         return holiday;
     }
 
+    private static Set<LocalDate> fixedHolidaysFor(int year) {
+        return Set.of(
+                observed(LocalDate.of(year, Month.JANUARY, 1)),
+                observed(LocalDate.of(year, Month.JULY, 4)),
+                observed(LocalDate.of(year, Month.DECEMBER, 25))
+        );
+    }
+
     private Set<LocalDate> holidaysFor(int year) {
         return holidaysByYear.computeIfAbsent(year, y -> {
-            Set<LocalDate> days = new HashSet<>(Set.of(
-                    observed(LocalDate.of(y, Month.JANUARY, 1)),
-                    observed(LocalDate.of(y, Month.JULY, 4)),
-                    observed(LocalDate.of(y, Month.DECEMBER, 25))
-            ));
+            Set<LocalDate> days = new HashSet<>(fixedHolidaysFor(y));
             // New Year's observance can shift backward into December of the
             // previous year when it falls on a Saturday; a lookup keyed by
             // that December date must still find it.
-            LocalDate nextYearNewYears = LocalDate.of(y + 1, Month.JANUARY, 1);
-            if (nextYearNewYears.getDayOfWeek() == DayOfWeek.SATURDAY) {
-                days.add(nextYearNewYears.minusDays(1));
+            LocalDate newYearsDayOfNextYear = LocalDate.of(y + 1, Month.JANUARY, 1);
+            if (newYearsDayOfNextYear.getDayOfWeek() == DayOfWeek.SATURDAY) {
+                days.add(newYearsDayOfNextYear.minusDays(1));
             }
             return Set.copyOf(days);
         });
@@ -88,6 +92,15 @@ public class BusinessDayCalendar {
      */
     public LocalDate addBusinessDays(LocalDate start, int businessDays) {
         LocalDate date = nextBusinessDay(start);
+        return advanceByBusinessDays(date, businessDays);
+    }
+
+    /**
+     * Advance from {@code from} by {@code businessDays} business days,
+     * skipping weekends and holidays.
+     */
+    private LocalDate advanceByBusinessDays(LocalDate from, int businessDays) {
+        LocalDate date = from;
         int remaining = businessDays;
         while (remaining > 0) {
             date = date.plusDays(1);

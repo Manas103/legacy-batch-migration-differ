@@ -1,0 +1,5 @@
+In this Java repository, open java-service/src/main/java/com/manasv/batchmigration/calc/BusinessDayCalendar.java.
+
+Refactor the holidaysFor(int year) method for clarity: rename the local variable `nextYearNewYears` to `newYearsDayOfNextYear`, and extract the three observed-holiday LocalDate.of(...) calls (New Year's Day, Independence Day, Christmas Day) into a small private static helper method named `fixedHolidaysFor(int year)` that returns a Set<LocalDate> of the three observed dates, called from holidaysFor before the December-shift check is applied. The method must produce byte-identical holiday sets to the current implementation for every year; this is a pure refactor, not a behavior change. Do not modify any other method or any other file in the repository.
+
+Make the edit directly with your file-editing tool. Do not just describe the change.

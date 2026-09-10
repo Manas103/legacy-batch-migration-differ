@@ -1,0 +1,50 @@
+{
+  "note": "Reduced, honestly-disclosed real sample: 3 of the 40 originally intended agent-authored migrations were actually run this session (time/budget constraints on the fix session that built this harness), each a real `claude -p` subprocess call, not a scripted/simulated diff. See README 'Findings' for why the count is 3, not 40.",
+  "model": "claude-haiku-4-5-20251001",
+  "gate_rule": "admit only if: mvn test passes AND the full 250,000-record parallel run vs legacy_output.csv shows 0 discrepancies AND PIT mutation testing on the touched class(es), scoped to the tests that already cover them, kills every generated mutant",
+  "tasks": [
+    {
+      "id": "task_01_null_guard",
+      "file_touched": "PositionValuationService.java",
+      "prompt_file": "harness/task_01_null_guard.txt",
+      "real_claude_call": true,
+      "cost_usd": 0.0237697,
+      "mvn_test_passed": true,
+      "parallel_run_discrepancies": 0,
+      "mutation_generated": 2,
+      "mutation_killed": 2,
+      "verdict": "ADMITTED"
+    },
+    {
+      "id": "task_02_extract_method",
+      "file_touched": "BusinessDayCalendar.java",
+      "prompt_file": "harness/task_02_extract_method.txt",
+      "real_claude_call": true,
+      "cost_usd": 0.03268,
+      "mvn_test_passed": true,
+      "parallel_run_discrepancies": 0,
+      "mutation_generated": 15,
+      "mutation_killed": 15,
+      "verdict": "ADMITTED"
+    },
+    {
+      "id": "task_03_holiday_refactor",
+      "file_touched": "BusinessDayCalendar.java",
+      "prompt_file": "harness/task_03_holiday_refactor.txt",
+      "real_claude_call": true,
+      "cost_usd": 0.0426259,
+      "mvn_test_passed": true,
+      "parallel_run_discrepancies": 0,
+      "mutation_generated": 16,
+      "mutation_killed": 16,
+      "verdict": "ADMITTED"
+    }
+  ],
+  "totals": {
+    "tasks_run": 3,
+    "real_claude_calls": 3,
+    "admitted": 3,
+    "blocked": 0,
+    "total_cost_usd": 0.0990756
+  }
+}

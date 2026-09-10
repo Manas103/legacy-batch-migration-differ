@@ -40,6 +40,12 @@ public class PositionValuationService {
      * not a side effect of a rewrite.
      */
     public BigDecimal computeMarketValue(BigDecimal quantity, BigDecimal price, String currency) {
+        if (quantity == null) {
+            throw new IllegalArgumentException("quantity must not be null");
+        }
+        if (price == null) {
+            throw new IllegalArgumentException("price must not be null");
+        }
         int scale = CurrencyPrecision.minorUnits(currency);
         return quantity.multiply(price).setScale(scale, RoundingMode.HALF_UP);
     }

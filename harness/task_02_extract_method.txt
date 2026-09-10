@@ -1,0 +1,5 @@
+In this Java repository, open java-service/src/main/java/com/manasv/batchmigration/calc/BusinessDayCalendar.java.
+
+Refactor the addBusinessDays(LocalDate start, int businessDays) method for readability: extract the while loop that advances `date` one day at a time and decrements `remaining` when the new date is a business day into a small private helper method named `advanceByBusinessDays(LocalDate from, int businessDays)` that returns the resulting LocalDate. addBusinessDays should then call nextBusinessDay(start) followed by advanceByBusinessDays on the result, and return that. The method must produce byte-identical results to the current implementation for every input; this is a pure refactor, not a behavior change. Do not modify any other method or any other file in the repository.
+
+Make the edit directly with your file-editing tool. Do not just describe the change.

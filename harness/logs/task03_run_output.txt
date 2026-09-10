@@ -1,0 +1,1 @@
+BatchMigrationApplication: processed 250000 record(s) -> ..\data\java_output_task03.csv

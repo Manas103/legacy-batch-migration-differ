@@ -1,0 +1,5 @@
+In this Java repository, open java-service/src/main/java/com/manasv/batchmigration/calc/PositionValuationService.java.
+
+Modify the computeMarketValue(BigDecimal quantity, BigDecimal price, String currency) method: at the very start of the method, add an explicit validation guard that throws a new IllegalArgumentException if quantity is null (message: "quantity must not be null") or if price is null (message: "price must not be null"). Check quantity first, then price. Do not change the rounding behavior, the method signature, or any other method in this file. Do not modify any other file in the repository.
+
+Make the edit directly with your file-editing tool. Do not just describe the change.
