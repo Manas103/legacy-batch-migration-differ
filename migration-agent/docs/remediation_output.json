@@ -1,0 +1,92 @@
+[
+  {
+    "id": 16,
+    "proposedAnsiSql": "SELECT id, CAST(hire_date AS VARCHAR) FROM emp WHERE dept_id = 2 ORDER BY id",
+    "proven": true,
+    "detail": "proven equivalent: 5 rows matched exactly"
+  },
+  {
+    "id": 18,
+    "proposedAnsiSql": "SELECT id, CAST(hire_date AS VARCHAR) FROM emp WHERE dept_id = 8 ORDER BY id",
+    "proven": true,
+    "detail": "proven equivalent: 8 rows matched exactly"
+  },
+  {
+    "id": 23,
+    "proposedAnsiSql": "SELECT id, CAST(hire_date AS VARCHAR) FROM emp WHERE dept_id = 3 ORDER BY id",
+    "proven": true,
+    "detail": "proven equivalent: 9 rows matched exactly"
+  },
+  {
+    "id": 31,
+    "proposedAnsiSql": "SELECT e.id, e.name, d.name FROM emp e LEFT JOIN dept d ON e.dept_id = d.id LEFT JOIN proj p ON e.id = p.emp_id ORDER BY e.id",
+    "proven": true,
+    "detail": "proven equivalent: 65 rows matched exactly"
+  },
+  {
+    "id": 35,
+    "proposedAnsiSql": "SELECT id, CAST(hire_date AS VARCHAR) FROM emp WHERE dept_id = 3 ORDER BY id",
+    "proven": true,
+    "detail": "proven equivalent: 9 rows matched exactly"
+  },
+  {
+    "id": 45,
+    "proposedAnsiSql": "SELECT id, name FROM (SELECT id, name, ROW_NUMBER() OVER (ORDER BY id) as rn FROM emp) WHERE rn <> 6 ORDER BY id",
+    "proven": false,
+    "detail": "verification threw: IllegalStateException: unsupported rownum op reached interpreter: <>"
+  },
+  {
+    "id": 51,
+    "proposedAnsiSql": "SELECT id, CAST(hire_date AS VARCHAR) FROM emp WHERE dept_id = 2 ORDER BY id",
+    "proven": true,
+    "detail": "proven equivalent: 5 rows matched exactly"
+  },
+  {
+    "id": 54,
+    "proposedAnsiSql": "SELECT e.id, e.name, d.name FROM emp e LEFT JOIN dept d ON e.dept_id = d.id LEFT JOIN proj p ON e.id = p.emp_id ORDER BY e.id",
+    "proven": true,
+    "detail": "proven equivalent: 65 rows matched exactly"
+  },
+  {
+    "id": 61,
+    "proposedAnsiSql": "SELECT id, CAST(hire_date AS VARCHAR) FROM emp WHERE dept_id = 5 ORDER BY id",
+    "proven": true,
+    "detail": "proven equivalent: 7 rows matched exactly"
+  },
+  {
+    "id": 63,
+    "proposedAnsiSql": "SELECT id, CAST(hire_date AS VARCHAR) FROM emp WHERE dept_id = 2 ORDER BY id",
+    "proven": true,
+    "detail": "proven equivalent: 5 rows matched exactly"
+  },
+  {
+    "id": 68,
+    "proposedAnsiSql": "SELECT e.id, e.name, d.name FROM emp e LEFT JOIN dept d ON e.dept_id = d.id LEFT JOIN proj p ON e.id = p.emp_id ORDER BY e.id",
+    "proven": true,
+    "detail": "proven equivalent: 65 rows matched exactly"
+  },
+  {
+    "id": 71,
+    "proposedAnsiSql": "SELECT id, CAST(hire_date AS VARCHAR) FROM emp WHERE dept_id = 5 ORDER BY id",
+    "proven": true,
+    "detail": "proven equivalent: 7 rows matched exactly"
+  },
+  {
+    "id": 72,
+    "proposedAnsiSql": "SELECT e.id, e.name, d.name FROM emp e LEFT JOIN dept d ON e.dept_id = d.id LEFT JOIN proj p ON e.id = p.emp_id ORDER BY e.id",
+    "proven": true,
+    "detail": "proven equivalent: 65 rows matched exactly"
+  },
+  {
+    "id": 79,
+    "proposedAnsiSql": "SELECT e.id, e.name, d.name FROM emp e LEFT JOIN dept d ON e.dept_id = d.id LEFT JOIN proj p ON e.id = p.emp_id ORDER BY e.id",
+    "proven": true,
+    "detail": "proven equivalent: 65 rows matched exactly"
+  },
+  {
+    "id": 83,
+    "proposedAnsiSql": "WITH RECURSIVE hierarchy AS (\n  SELECT id, name, mgr_id FROM emp WHERE dept_id = 6\n  UNION ALL\n  SELECT e.id, e.name, e.mgr_id FROM emp e\n  INNER JOIN hierarchy h ON e.id = h.mgr_id\n)\nSELECT id, name FROM hierarchy",
+    "proven": false,
+    "detail": "verification threw: JdbcSQLSyntaxErrorException: Syntax error in SQL statement \"WITH RECURSIVE hierarchy [*]AS (\\000a  SELECT id, name, mgr_id FROM emp WHERE dept_id = 6\\000a  UNION ALL\\000a  SELECT e.id, e.name, e.mgr_id FROM emp e\\000a  INNER JOIN hierarchy h ON e.id = h.mgr_id\\000a)\\000aSELECT id, name FROM hierarchy\"; expected \"(\"; SQL statement:\nWITH RECURSIVE hierarchy AS (\n  SELECT id, name, mgr_id FROM emp WHERE dept_id = 6\n  UNION ALL\n  SELECT e.id, e.name, e.mgr_id FROM emp e\n  INNER JOIN hierarchy h ON e.id = h.mgr_id\n)\nSELECT id, name FROM hierarchy [42001-232]"
+  }
+]

@@ -14,6 +14,18 @@ venv/
 data/*.txt
 data/*.csv
 
+# Regenerable: java -cp migration-agent/target/classes:migration-agent/target/lib/*
+# com.manasv.batchmigration.legacysql.Main migration_results.json (see
+# migration-agent/README section of the main README). 1,000 statements plus
+# their transpiled SQL is too large to track; docs/ under migration-agent/
+# keeps the summarized, honest-sized output instead.
+migration_results.json
+migration-agent/migration_results.json
+
+# Go
+migration-agent/review-queue/review-queue
+migration-agent/review-queue/*.exe
+
 # IDE / logs
 .idea/
 .vscode/

@@ -1,0 +1,14 @@
+total statements: 1000
+converted deterministically: 840
+refused by transpiler: 160
+  refusal reasons:
+    legacy TO_CHAR date format mask: 56
+    ambiguous multi-table outer join ordering: 44
+    non-range ROWNUM usage (<>): 13
+    CONNECT BY hierarchical query: 22
+    non-range ROWNUM usage (>=): 7
+    non-range ROWNUM usage (>): 12
+    non-range ROWNUM usage (=): 6
+converted statements proven equivalent by differential execution: 840
+converted statements that FAILED differential execution: 0
+results written to ../migration_results.json

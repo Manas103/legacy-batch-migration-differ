@@ -1,0 +1,28 @@
+=== RUN   TestRefusedOnlyFiltersAndSorts
+--- PASS: TestRefusedOnlyFiltersAndSorts (0.00s)
+=== RUN   TestBuildQueueDefaultsToNotAttempted
+--- PASS: TestBuildQueueDefaultsToNotAttempted (0.00s)
+=== RUN   TestBuildQueueAppliesProvenRemediation
+--- PASS: TestBuildQueueAppliesProvenRemediation (0.00s)
+=== RUN   TestBuildQueueAppliesUnprovenRemediation
+--- PASS: TestBuildQueueAppliesUnprovenRemediation (0.00s)
+=== RUN   TestComputeStats
+--- PASS: TestComputeStats (0.00s)
+=== RUN   TestLoadStatementOutcomesRoundTrips
+--- PASS: TestLoadStatementOutcomesRoundTrips (0.00s)
+=== RUN   TestLoadRemediationsReturnsEmptyMapWhenFileMissing
+--- PASS: TestLoadRemediationsReturnsEmptyMapWhenFileMissing (0.00s)
+=== RUN   TestExtractSqlStripsCodeFenceAndSemicolon
+--- PASS: TestExtractSqlStripsCodeFenceAndSemicolon (0.00s)
+=== RUN   TestExtractSqlHandlesPlainText
+--- PASS: TestExtractSqlHandlesPlainText (0.00s)
+=== RUN   TestHandleQueueReturnsAllItems
+--- PASS: TestHandleQueueReturnsAllItems (0.00s)
+=== RUN   TestHandleQueueItemReturnsOne
+--- PASS: TestHandleQueueItemReturnsOne (0.00s)
+=== RUN   TestHandleQueueItemNotFound
+--- PASS: TestHandleQueueItemNotFound (0.00s)
+=== RUN   TestHandleStats
+--- PASS: TestHandleStats (0.00s)
+PASS
+ok  	manasv.com/reviewqueue	(cached)
